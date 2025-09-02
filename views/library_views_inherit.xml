@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_library_book_tree_inherit" model="ir.ui.view">
+        <field name="name">library.book.tree.inherit</field>
+        <field name="model">library.book</field>
+        <field name="inherit_id" ref="library_management.view_library_book_tree"/>
+        <field name="arch" type="xml">
+            
+            <!-- Вставка isbn после title -->
+            <xpath expr="//field[@name='title']" position="after">
+                <field name="isbn"/>
+            </xpath>
+            
+            <!-- Изменение названия поля is_available -->
+            <xpath expr="//field[@name='is_available']" position="attributes">
+                <attribute name="string">Статус книги</attribute>
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>

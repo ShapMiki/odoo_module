@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Шаблон отчета для книги -->
+  <template id="report_book_document">
+    <t t-call="web.external_layout">
+      <t t-foreach="docs" t-as="doc">
+        <div class="page">
+          <div class="oe_structure"/>
+          <h2>Информация о книге</h2>
+          <div class="oe_structure"/>
+          
+          <div class="row mb-3">
+            <div class="col-6">
+              <p class="m-0">
+                <strong>Название:</strong>
+                <span t-field="doc.title">Название книги</span>
+              </p>
+              <p class="m-0">
+                <strong>Автор:</strong>
+                <span t-field="doc.author">Автор</span>
+              </p>
+              <p class="m-0">
+                <strong>ISBN:</strong>
+                <span t-field="doc.isbn">ISBN</span>
+              </p>
+            </div>
+            <div class="col-6">
+              <p class="m-0">
+                <strong>Цена:</strong>
+                <span t-field="doc.price">0.00</span> руб.
+              </p>
+              <p class="m-0">
+                <strong>Количество страниц:</strong>
+                <span t-field="doc.count_pages">0</span>
+              </p>
+              <p class="m-0">
+                <strong>Тип книги:</strong>
+                <span t-field="doc.large_type">Normal</span>
+              </p>
+            </div>
+          </div>
+          
+          <div t-if="doc.description" class="oe_structure">
+            <h3>Описание</h3>
+            <p t-field="doc.description">Описание книги</p>
+          </div>
+          
+          <div t-if="doc.publisher_id" class="oe_structure">
+            <h3>Издательство</h3>
+            <p t-field="doc.publisher_id">Издательство</p>
+          </div>
+          
+          <div t-if="doc.genre_ids" class="oe_structure">
+            <h3>Жанры</h3>
+            <ul>
+              <li t-foreach="doc.genre_ids" t-as="genre">
+                <span t-field="genre.name">Жанр</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="oe_structure"/>
+        </div>
+      </t>
+    </t>
+  </template>
+
+  <!-- Действие отчета -->
+  <record id="action_report_library_book" model="ir.actions.report">
+    <field name="name">Отчет о книге</field>
+    <field name="model">library.book</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">library_management.report_book_document</field>
+    <field name="report_file">library_management.report_book_document</field>
+    <field name="print_report_name">'Книга - %s' % (object.title or 'Без названия')</field>
+    <field name="binding_model_id" ref="model_library_book"/>
+    <field name="binding_type">report</field>
+  </record>
+</odoo>
