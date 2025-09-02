@@ -1,31 +1,4 @@
 <odoo>
-
-     <!-- Канбан -->
-    <record id="view_event_kanban" model="ir.ui.view">
-        <field name="name">event.event.kanban</field>
-        <field name="model">event.event</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <field name="name"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_global_click">
-                            <div class="oe_kanban_details">
-                                <strong><t t-esc="record.full_title.value"/></strong>
-                                <span>Price: <t t-esc="record.price.value" /></span>
-                            </div>
-                            <div>
-                                <span t-if="record.is_available.value" style="color: green;">✅ Доступна</span>
-                                <span t-else="" style="color: red;">❌ На руках</span>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>    
-    </record>
-
-
     <!-- Список книг (Tree View) -->
     <record id="view_library_book_tree" model="ir.ui.view">
         <field name="name">library.book.tree</field>
@@ -65,14 +38,23 @@
                         <field name="is_available" statusbar_visible="True, False"
                         statusbar_colors="True:red,False:green"/>
                         <field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                        <field name="image" widget="image"/>
-                    </group>
-                     <header>
-                            <button name="action_mark_as_featured" 
-                                string="Confirm" 
+
+                        <field name="price_in_pln" widget="monetary" invisible="price_in_pln == 0"/>
+                        <button name="get_price_in_pln" 
+                                string="get ptice in pln" 
                                 type="object" 
                                 class="oe_highlight"
-                                invisible="is_available == True"/>
+                                style="color:yellow;"
+                                />
+
+                        <field name="image" widget="image"/>
+                    </group>
+                    <header>
+                        <button name="action_mark_as_featured" 
+                            string="Confirm" 
+                            type="object" 
+                            class="oe_highlight"
+                            invisible="is_available == True"/>
                     </header>
                 </sheet>
             </form>

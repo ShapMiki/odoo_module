@@ -1,5 +1,7 @@
 from odoo import models, fields
 
+
+
 class LibraryPublisher(models.Model):
     _name = "library.publisher"
     _description = "Library publisher"

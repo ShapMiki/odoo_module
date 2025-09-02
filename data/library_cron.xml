@@ -5,7 +5,6 @@
     <field name="state">code</field>
     <field name="code">model.update_price_cron()</field>
     <field name="active">True</field>
-    <!-- Execute daily at 3 AM, for example -->
     <field name="interval_type">days</field>
     <field name="interval_number">1</field>
     <field name="nextcall">2025-01-15 03:00:00</field>

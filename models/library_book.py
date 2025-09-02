@@ -1,4 +1,12 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
+import requests
+import logging
+
+
+
+_logger = logging.getLogger(__name__)
+
 
 class LibraryBook(models.Model):
     _name = "library.book"
@@ -30,6 +38,7 @@ class LibraryBook(models.Model):
     )
 
     price = fields.Float("price", default=0)
+    price_in_pln = fields.Float("Price in pln", default=0, store=False)
 
     image = fields.Image("image")
 
@@ -46,10 +55,12 @@ class LibraryBook(models.Model):
         ),
     ]
 
+
     @api.depends('title', 'author')
     def _compute_full_title(self):
         for line in self:
             line.full_title = (line.author or "") + " " + (line.title or "")
+
 
     @api.depends('count_pages')
     def _compute_large_type(self):
@@ -66,7 +77,38 @@ class LibraryBook(models.Model):
 
             line.large_type  = large_type_str
 
+ 
+    def get_price_in_pln(self):
+        
+        key = self.env['ir.config_parameter'].sudo().get_param('currency_api_key')
 
+        params = {
+            'apikey': key,
+            'base_currency': "USD",
+        }
+
+        try:
+            request = requests.get('https://api.freecurrencyapi.com/v1/latest', params=params)
+            request.raise_for_status()
+            pln_currency = request.json()['data']['PLN']
+        except requests.exceptions.RequestException as e:
+            _logger.error("Error fetching geocode data: %s", e)
+            raise UserError("Try leter")
+        except KeyError as e:
+            _logger.error("Unexpected JSON format: missing key %s", e)
+            raise UserError("Try leter")
+
+        self.ensure_one()
+        value = self.price * pln_currency
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'library.book',
+            'view_mode': 'form',
+            'res_id': self.id,
+            'target': 'current',
+            'context': dict(self.env.context, default_price_in_pln=value),
+        }
+    
     def action_mark_as_featured(self):
         for record in self:
             if not record.is_available:
