@@ -16,6 +16,32 @@
         </field>
     </record>
 
+
+    <!--withard from "is_avaible"-->
+    <record id="view_library_book_availability_wizard" model="ir.ui.view">
+        <field name="name">library.book.availability.wizard.form</field>
+        <field name="model">library.book.availability.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirm">
+                <group>
+                    <field name="confirm_text" readonly="1"/>
+                </group>
+                <footer>
+                    <button string="Yes" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="NONONO" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_library_book_availability_wizard" model="ir.actions.act_window">
+        <field name="name">confirm available</field>
+        <field name="res_model">library.book.availability.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
     <!-- Форма книги (Form View) -->
     <record id="view_library_book_form" model="ir.ui.view">
         <field name="name">library.book.form</field>
@@ -37,6 +63,11 @@
                         <field name="published_date"/>
                         <field name="is_available" statusbar_visible="True, False"
                         statusbar_colors="True:red,False:green"/>
+                        <button name="%(action_library_book_availability_wizard)d"
+                            string="Изменить доступность"
+                            type="action"
+                            class="btn-primary"/>
+
                         <field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
 
                         <field name="price_in_pln" widget="monetary" invisible="price_in_pln == 0"/>
