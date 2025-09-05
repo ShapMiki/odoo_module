@@ -3,7 +3,7 @@
     "version": "1.0",
     "author": "Mikita",
     "category": "Library",
-    "depends": ["base", "event"],
+    "depends": ["base", "event", "mail"],
     "data": [
         'security/library_security.xml',
         'security/ir.model.access.csv',
@@ -12,6 +12,7 @@
         'report/book_report.xml',
         'views/event_kanban.xml',
         'data/library_cron.xml',
+        'data/email_view_template.xml',
     ],
     "installable": True,
     "application": True,

@@ -119,3 +119,8 @@ class LibraryBook(models.Model):
         for record in self:
             record.price += 0.01
 
+    def action_send_followup_email(self):
+        template = self.env.ref('library_management.email_template_followup')
+        for record in self:
+            template.send_mail(record.id, force_send=True)
+            

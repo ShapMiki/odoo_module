@@ -86,6 +86,11 @@
                             type="object" 
                             class="oe_highlight"
                             invisible="is_available == True"/>
+
+                        <button name="action_send_followup_email"
+                            string="Отправить письмо"
+                            type="object"
+                            class="oe_highlight"/>
                     </header>
                 </sheet>
             </form>
