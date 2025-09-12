@@ -1,0 +1,17 @@
+<odoo>
+    <record id="library_email_template" model="mail.template">
+        <field name="name">Customer Follow-Up Reminder</field>
+        <field name="model_id" ref="library_management.model_library_book"/>
+        <field name="email_from">nikikiki01102005@gmail.com</field>
+        <field name="email_to">Nikikikiplays2016@gmail.com</field>
+        <field name="subject">Follow-Up Reminder: ${object.name}</field>
+        <field name="body_html">
+        <![CDATA[
+        <p>Здравствуйте,</p>
+        <p>Вы взяли книгу: <strong>${object.title}</strong></p>
+        <p>Автор: ${object.author}</p>
+        ]]>
+        </field>
+        <field name="auto_delete" eval="True"/>
+    </record>
+</odoo>

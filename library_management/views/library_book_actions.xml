@@ -1,0 +1,17 @@
+<odoo>
+     <!-- Действие -->
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Library Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Действие для canban-->
+    <record id="action_library_book_kanban" model="ir.actions.act_window">
+        <field name="name">Books Kanban View</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="view_event_kanban"/>
+    </record>
+
+</odoo>

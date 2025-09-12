@@ -1,0 +1,12 @@
+<odoo>
+  <record id="ir_cron_invoice_automation" model="ir.cron">
+    <field name="name">Auto update price</field>
+    <field name="model_id" ref="library_management.model_library_book"/>
+    <field name="state">code</field>
+    <field name="code">model.update_price_cron()</field>
+    <field name="active">True</field>
+    <field name="interval_type">days</field>
+    <field name="interval_number">1</field>
+    <field name="nextcall">2025-01-15 03:00:00</field>
+  </record>
+</odoo>

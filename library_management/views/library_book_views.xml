@@ -1,0 +1,120 @@
+<odoo>
+    <!-- Список книг (Tree View) -->
+    <record id="view_library_book_tree" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list string="Library Books">
+                <field name="title"/>
+                <field name="author"/>
+                <field name="isbn"/>
+                <field name="is_available"/>
+                <field name="count_pages"/>
+                <field name="large_type"/>
+                <field name="full_title"/>
+            </list>
+        </field>
+    </record>
+
+
+    <!--withard from "is_avaible"-->
+    <record id="view_library_book_availability_wizard" model="ir.ui.view">
+        <field name="name">library.book.availability.wizard.form</field>
+        <field name="model">library.book.availability.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirm">
+                <group>
+                    <field name="confirm_text" readonly="1"/>
+                </group>
+                <footer>
+                    <button string="Yes" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="NONONO" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_library_book_availability_wizard" model="ir.actions.act_window">
+        <field name="name">confirm available</field>
+        <field name="res_model">library.book.availability.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <!-- Форма книги (Form View) -->
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+        
+            <form string="Library Book">
+                <sheet>
+                    <div>
+                        <span style="color: red;">БИБЛИОТЕКА</span>
+                    </div>
+
+                    <group>
+                        <field name="title"/>
+                        <field name="author"/>
+                        <field name="count_pages"/>
+                        <field name="isbn"/>
+                        <field name="description"/>
+                        <field name="published_date"/>
+                        <field name="is_available" statusbar_visible="True, False"
+                        statusbar_colors="True:red,False:green"/>
+                        <button name="%(action_library_book_availability_wizard)d"
+                            string="Изменить доступность"
+                            type="action"
+                            class="btn-primary"/>
+
+                        <field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+                        <field name="price_in_pln" widget="monetary" invisible="price_in_pln == 0"/>
+                        <button name="get_price_in_pln" 
+                                string="get ptice in pln" 
+                                type="object" 
+                                class="oe_highlight"
+                                style="color:yellow;"
+                                />
+
+                        <field name="image" widget="image"/>
+                    </group>
+                    <header>
+                        <button name="action_mark_as_featured" 
+                            string="Confirm" 
+                            type="object" 
+                            class="oe_highlight"
+                            invisible="is_available == True"/>
+
+                        <button name="action_send_followup_email"
+                            string="Отправить письмо"
+                            type="object"
+                            class="oe_highlight"/>
+                    </header>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Поиск (Search View) -->
+    <record id="view_library_book_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <search string="Search Library Books">
+                <field name="title" string="Title"/>
+                <field name="author" string="Author"/>
+                <field name="isbn" string="ISBN"/>
+                <filter name="available" string="Available" domain="[('is_available','=',True)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_author" string="Author" context="{'group_by':'author'}"/>
+                    <filter name="group_available" string="Availability" context="{'group_by':'is_available'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>

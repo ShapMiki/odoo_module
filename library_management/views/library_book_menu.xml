@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Меню -->
+    <menuitem id="menu_library_root" name="Library"/>
+    <menuitem id="menu_library_books" name="Books" parent="menu_library_root" action="action_library_book"/>
+
+     <!-- Меню для канбан-представления -->
+    <menuitem id="menu_library_books_kanban"
+              name="Books Kanban"
+              parent="menu_library_root"
+              action="action_library_book_kanban"
+              sequence="20"/>
+</odoo>
