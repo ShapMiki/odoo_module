@@ -5,8 +5,8 @@
     <field name="count_pages">32</field>
     <field name="isbn">234525634</field>
     <field name="description">Рассказл про лену</field>
-    <field name="published_date"> </field>
-    <field name="is_available">True</field>
+    <field name="published_date">1980-05-01</field>
+      <field name="is_available">True</field>
     <field name="price">43</field>
   </record>
   <record id="res_partner_demo_2" model="library.book">
@@ -15,7 +15,7 @@
     <field name="count_pages">324</field>
     <field name="isbn">34523</field>
     <field name="description">BIBA I BOBA</field>
-    <field name="published_date"> </field>
+<field name="published_date">1980-05-01</field>
     <field name="is_available">True</field>
     <field name="price">24</field>
   </record>
@@ -25,7 +25,7 @@
     <field name="count_pages">12</field>
     <field name="isbn">7378491</field>
     <field name="description">Privet ot andreya lobanova</field>
-    <field name="published_date"></field>
+    <field name="published_date">1980-05-01</field>
     <field name="is_available">True</field>
     <field name="price">93</field>
   </record>
@@ -35,7 +35,7 @@
     <field name="count_pages">24</field>
     <field name="isbn">438289</field>
     <field name="description">Poka ot anreya lobanova</field>
-    <field name="published_date"> </field>
+    <field name="published_date">1980-05-01</field>
     <field name="is_available">False</field>
     <field name="price">900</field>
   </record>

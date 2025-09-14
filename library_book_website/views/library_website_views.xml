@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="library_books_template" name="Library Books">
+        <t t-call="web.frontend_layout">
+            <t t-set="title">Library Books</t>
+            <div class="container mt-4">
+                <h1>Library Books</h1>
+                <div class="row">
+                    <t t-foreach="books" t-as="book" t-key="book.id">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title" t-esc="book.title"/>
+                                    <p class="card-text">
+                                        <strong>Author:</strong> <span t-esc="book.author"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Genres:</strong> 
+                                        <span t-foreach="book.genre_ids" t-as="genre" t-key="genre.id">
+                                            <span class="badge badge-info mr-1" t-esc="genre.name"/>
+                                        </span>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Publisher:</strong> <span t-esc="book.publisher_id.name"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Published Date:</strong> <span t-esc="book.published_date"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Pages:</strong> <span t-esc="book.count_pages"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>ISBN:</strong> <span t-esc="book.isbn"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Price:</strong> $<span t-esc="book.price"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Status:</strong> 
+                                        <span t-if="book.is_available" class="badge badge-success">Available</span>
+                                        <span t-else="" class="badge badge-warning">Not Available</span>
+                                    </p>
+                                    <p class="card-text" t-if="book.description">
+                                        <strong>Description:</strong> <span t-esc="book.description"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <t t-if="not books">
+                    <div class="alert alert-info">
+                        No books found in the library.
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>
