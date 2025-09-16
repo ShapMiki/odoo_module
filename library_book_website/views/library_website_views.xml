@@ -3,7 +3,7 @@
     <template id="library_books_template" name="Library Books">
         <t t-call="web.frontend_layout">
             <t t-set="title">Library Books</t>
-            <div class="container mt-4">
+            <div class="container mt-4 library-home">
                 <h1>Library Books</h1>
                 <div class="row">
                     <t t-foreach="books" t-as="book" t-key="book.id">

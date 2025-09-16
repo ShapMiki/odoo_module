@@ -1,0 +1,28 @@
+.library-home {
+  background-color: #D85FE8;
+  padding: 20px;
+
+  h1 {
+    color: #343a40;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    border-radius: 10px;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+
+    background: #D85FE8;
+
+    .card-title {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .badge-success {
+      background-color: #28a745 !important;
+    }
+    .badge-warning {
+      background-color: #ffc107 !important;
+    }
+  }
+}

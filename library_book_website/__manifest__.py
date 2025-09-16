@@ -8,6 +8,11 @@
     'data': [
         'views/library_website_views.xml',
     ],
+    'assets': {
+        'web.assets_frontend': [
+            'library_book_website/static/src/css/library_books.scss',
+        ],
+    },
     'installable': True,
     'application': False,
 }
