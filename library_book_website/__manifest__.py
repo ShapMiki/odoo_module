@@ -10,7 +10,8 @@
     ],
     'assets': {
         'web.assets_frontend': [
-            'library_book_website/static/src/css/library_books.scss',
+            'library_book_website/static/src/css/library_book.scss',
+            'library_book_website/static/src/js/library_book.js',
         ],
     },
     'installable': True,
