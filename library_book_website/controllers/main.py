@@ -1,5 +1,6 @@
 from odoo import http
 from odoo.http import request
+import json
 
 class LibraryWebsite(http.Controller):
 
@@ -9,3 +10,9 @@ class LibraryWebsite(http.Controller):
         return request.render('library_book_website.library_books_template', {
             'books': books,
         })
+
+    @http.route('/library/owl', type='http', auth='public', website=True)
+    def owl_counter(self, **kw):
+        # Простая страница с OWL-счётчиком
+        return request.render('library_book_website.library_book_owl_page')
+

@@ -7,11 +7,15 @@
     'depends': ['website', 'library_management'],
     'data': [
         'views/library_website_views.xml',
+        'views/library_book_templates.xml',
     ],
     'assets': {
         'web.assets_frontend': [
-            'library_book_website/static/src/css/library_book.scss',
-            'library_book_website/static/src/js/library_book.js',
+            'static/src/css/library_book.scss',
+            'static/src/js/library_book.js',
+            'static/src/js/owl/library_book_owl.js',
+            'static/src/js/owl/library_book_mount.js',
+            'static/src/xml/library_book_templates.xml',
         ],
     },
     'installable': True,

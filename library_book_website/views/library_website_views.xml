@@ -2,10 +2,16 @@
 <odoo>
     <template id="library_books_template" name="Library Books">
         <t t-call="web.frontend_layout">
-            <script type="text/javascript" src="/library_book_website/static/src/js/library_book.js"></script>
             <t t-set="title">Library Books</t>
             <div class="container mt-4 library-home">
                 <h1>Library Books</h1>
+                <!-- OWL Counter  -->
+                <div class="my-3">
+                    <div id="library-book-owl">
+                        <p>BICHUPIDO</p>
+                    </div>
+                </div>
+                
                 <div class="row">
                     <t t-foreach="books" t-as="book" t-key="book.id">
                         <div class="col-md-4 mb-4">

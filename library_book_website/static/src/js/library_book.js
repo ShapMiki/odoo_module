@@ -1,19 +1,21 @@
-console.log("Library Website JS loaded!");
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("func run")
-    const header = document.querySelector(".o_main_nav")
-    header.style.setProperty("background-color", "#FF0000", "important")
-
+const start = () => {
+    console.log("Library Website JS loaded and running");
     setTimeout(() => {
-    const cards = document.querySelectorAll(".card-body");
-    cards.forEach((card) => {
-        let card_texts = document.querySelectorAll(".card-text")
-        card_texts.forEach( (text) =>{
-            text.style.setProperty("font-size", "20px", "important");
-            console.log(text.textContent);
-        });
-    });
-    }, 5000);
+        // Website header (frontend) uses .o_header_affix .navbar or #top .navbar
+        const header = document.querySelector("header#top .navbar, .o_header_affix .navbar, .o_main_navbar");
+        if (header) {
+            header.style.setProperty("background-color", "#FF0000", "important");
+            console.log("Header color updated");
+        } else {
+            console.log("Header element not found");
+        }
+    }, 1000);
 
-});
+};
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+} else {
+    start();
+}
