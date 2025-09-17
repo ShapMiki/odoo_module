@@ -21,4 +21,4 @@ export class LibraryBookList extends Component {
     }
 }
 
-LibraryBookList.template = "library_book_website.library_book_templates";
+LibraryBookList.template = "library_book_website.LibraryBookListTemplate";

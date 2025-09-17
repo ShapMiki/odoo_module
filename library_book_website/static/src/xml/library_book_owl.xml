@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="library_book_website.LibraryBookListTemplate" owl="1">
+        <div class="alert alert-primary" role="alert">
+            <strong>Counter:</strong>
+            <t t-esc="state.value"/>
+        </div>
+    </t>
+</templates>

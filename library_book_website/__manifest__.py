@@ -11,11 +11,11 @@
     ],
     'assets': {
         'web.assets_frontend': [
-            'static/src/css/library_book.scss',
-            'static/src/js/library_book.js',
-            'static/src/js/owl/library_book_owl.js',
-            'static/src/js/owl/library_book_mount.js',
-            'static/src/xml/library_book_templates.xml',
+            '/library_book_website/static/src/css/library_book.scss',
+            '/library_book_website/static/src/js/library_book.js',
+            '/library_book_website/static/src/js/owl/library_book_owl.js',
+            '/library_book_website/static/src/js/owl/library_book_mount.js',
+            'library_book_website/static/src/xml/library_book_owl.xml',
         ],
     },
     'installable': True,
