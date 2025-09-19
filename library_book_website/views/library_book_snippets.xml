@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Определяем сниппет -->
+    <template id="snippet_library_featured_books" name="Featured Books Snippet">
+        <section class="o_snippet s_library_books"
+                 data-oe-type="snippet"
+                 data-name="Featured Books"
+                 data-thumbnail="/library_book_website/static/src/img/snippet_featured_books.png">
+
+            <div class="container">
+                <h3>📚 Популярные книги</h3>
+                <div class="row">
+                    <t t-foreach="request.env['library.book'].search([], limit=4)" t-as="book">
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5><t t-esc="book.name"/></h5>
+                                    <p><t t-esc="book.author_id.name"/></p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>
