@@ -11,3 +11,12 @@ class LibraryWebsite(http.Controller):
             'books': books,
         })
 
+    @http.route('/library/contact/submit', type='http', auth='public', website=True, csrf=True)
+    def contact_submit(self, **post):
+        name = post.get('name')
+        message = post.get('message')
+
+        print(f"NOW {name} write: {message}")
+
+
+        return request.redirect('/')

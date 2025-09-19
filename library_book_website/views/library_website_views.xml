@@ -62,6 +62,7 @@
                     </div>
                 </t>
             </div>
+            <div class="form_inherit_container"></div>
         </t>
     </template>
 </odoo>
