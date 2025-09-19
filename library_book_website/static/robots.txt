@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Disallow admin areas
+Disallow: /manager
+
+# Allow library pages
+Allow: /
+Allow: /library/book/
+Allow: /library/author/
+Allow: /library/genre/
+
+# Crawl delay
+Crawl-delay: 1

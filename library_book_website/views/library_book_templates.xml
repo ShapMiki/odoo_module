@@ -1,7 +1,12 @@
 <odoo>
     <template id="library_book_owl_page" name="Library OWL Counter Page">
         <t t-call="web.frontend_layout">
-            <t t-set="title">Library OWL Counter</t>
+            <t t-set="title">Интерактивная библиотека - OWL Counter</t>
+            <meta name="description" content="Интерактивная демонстрация библиотеки с использованием OWL компонентов. Современный веб-интерфейс для управления книгами."/>
+            <meta name="keywords" content="OWL, библиотека, интерактивность, веб-компоненты"/>
+            <meta property="og:title" content="Интерактивная библиотека - OWL Counter"/>
+            <meta property="og:description" content="Интерактивная демонстрация библиотеки с использованием OWL компонентов."/>
+            <meta property="og:type" content="website"/>
             <div class="container mt-4">
                 <h2>OWL Counter Demo</h2>
                 <!-- Контейнер куда монтируется OWL компонент -->

@@ -2,7 +2,12 @@
 <odoo>
     <template id="library_books_template" name="Library Books">
         <t t-call="web.frontend_layout">
-            <t t-set="title">Library Books</t>
+            <t t-set="title">Библиотека книг - Каталог литературы</t>
+            <meta name="description" content="Обширная коллекция книг различных жанров. Найдите свою следующую любимую книгу в нашей библиотеке. Доступные книги, авторы, издательства и многое другое."/>
+            <meta name="keywords" content="библиотека, книги, литература, каталог, авторы, жанры"/>
+            <meta property="og:title" content="Библиотека книг - Каталог литературы"/>
+            <meta property="og:description" content="Обширная коллекция книг различных жанров. Найдите свою следующую любимую книгу в нашей библиотеке."/>
+            <meta property="og:type" content="website"/>
             <div class="inherit_container"></div>
             <div class="container mt-4 library-home">
                 <h1>Library Books</h1>
@@ -18,18 +23,12 @@
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title" t-esc="book.title"/>
+                                    <h5 class="card-title">
+                                        <a t-att-href="'/library/book/' + str(book.id)" t-esc="book.title"/>
+                                    </h5>
                                     <p class="card-text">
-                                        <strong>Author:</strong> <span t-esc="book.author"/>
-                                    </p>
-                                    <p class="card-text">
-                                        <strong>Genres:</strong> 
-                                        <span t-foreach="book.genre_ids" t-as="genre" t-key="genre.id">
-                                            <span class="badge badge-info mr-1" t-esc="genre.name"/>
-                                        </span>
-                                    </p>
-                                    <p class="card-text">
-                                        <strong>Publisher:</strong> <span t-esc="book.publisher_id.name"/>
+                                        <strong>Автор:</strong> 
+                                        <p><t t-esc="book.author"/></p>
                                     </p>
                                     <p class="card-text">
                                         <strong>Published Date:</strong> <span t-esc="book.published_date"/>
@@ -65,4 +64,49 @@
             <div class="form_inherit_container"></div>
         </t>
     </template>
+
+    <!-- Шаблон для детальной страницы книги -->
+    <template id="book_detail_template" name="Book Detail">
+        <t t-call="web.frontend_layout">
+            <t t-set="title" t-esc="book.title + ' - ' + book.author"/>
+            <meta name="description" t-att-content="'Книга: ' + book.title + ' от автора ' + book.author + '. ' + (book.description or 'Подробная информация о книге.')"/>
+            <meta name="keywords" t-att-content="book.title"/>
+            <meta property="og:title" t-att-content="book.title + ' - ' + book.author"/>
+            <meta property="og:description" t-att-content="'Книга: ' + book.title + ' от автора ' + book.author"/>
+            <meta property="og:type" content="book"/>
+            
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1 t-esc="book.title"/>
+                        <h3 class="text-muted" t-esc="'Автор: ' + book.author"/>
+                        
+                        <div class="mt-4">
+                            <h4>Описание</h4>
+                            <p t-esc="book.description or 'Описание не предоставлено'"/>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h4>Информация о книге</h4>
+                            <ul class="list-unstyled">
+                                <li><strong>Дата публикации:</strong> <span t-esc="book.published_date"/></li>
+                                <li><strong>Количество страниц:</strong> <span t-esc="book.count_pages"/></li>
+                                <li><strong>ISBN:</strong> <span t-esc="book.isbn"/></li>
+                                <li><strong>Цена:</strong> $<span t-esc="book.price"/></li>
+                                <li><strong>Статус:</strong> 
+                                    <span t-if="book.is_available" class="badge badge-success">Доступна</span>
+                                    <span t-else="" class="badge badge-warning">Не доступна</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="/" class="btn btn-secondary">← Назад к каталогу</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
 </odoo>
