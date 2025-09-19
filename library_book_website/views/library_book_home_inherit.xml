@@ -1,0 +1,10 @@
+<odoo>
+  <template id="my_home_inherit" inherit_id="library_book_website.library_books_template" name="Custom Homepage">
+      <xpath expr="//div[@class='inherit_container']" position="inside">
+          <section class="custom-section">
+              <h2 t-out="'Welcome to My Custom Homepage'" t-translation="yes"/>
+              <p t-out="'This is my inherited section.'" t-translation="yes"/>
+          </section>
+      </xpath>
+  </template>
+</odoo>

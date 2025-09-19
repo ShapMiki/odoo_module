@@ -3,6 +3,7 @@
     <template id="library_books_template" name="Library Books">
         <t t-call="web.frontend_layout">
             <t t-set="title">Library Books</t>
+            <div class="inherit_container"></div>
             <div class="container mt-4 library-home">
                 <h1>Library Books</h1>
                 <!-- OWL Counter  -->

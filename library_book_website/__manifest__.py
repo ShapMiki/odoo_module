@@ -8,6 +8,7 @@
     'data': [
         'views/library_website_views.xml',
         'views/library_book_templates.xml',
+        'views/library_book_home_inherit.xml',
     ],
     'assets': {
         'web.assets_frontend': [
