@@ -11,6 +11,14 @@ class LibraryWebsite(http.Controller):
             'books': books,
         })
 
+    @http.route('/manager', type='http', auth='user', website=True)
+    def manager_page(self, **kwargs):
+        is_manager = request.env.user.has_group('library_book_website.group_library_manager')
+        print(f"\n\nis_manager: {is_manager}\n\n")
+        return request.render('library_book_website.restricted_content', {
+            'is_manager': is_manager,
+        })
+
     @http.route('/library/contact/submit', type='http', auth='public', website=True, csrf=True)
     def contact_submit(self, **post):
         name = post.get('name')
@@ -20,3 +28,4 @@ class LibraryWebsite(http.Controller):
 
 
         return request.redirect('/')
+

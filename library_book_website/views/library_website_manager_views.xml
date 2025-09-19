@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="restricted_content" name="Restricted Content Example">
+    <t t-if="is_manager">
+      <p>Manager-only information goes here.</p>
+    </t>
+    <t t-else="">
+      <p>You must be a manager to see this content.</p>
+    </t>
+  </template>
+</odoo>

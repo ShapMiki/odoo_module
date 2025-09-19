@@ -9,6 +9,9 @@
         'views/library_website_views.xml',
         'views/library_book_templates.xml',
         'views/library_book_home_inherit.xml',
+        'views/library_website_manager_views.xml',
+        'security/library_website_security.xml',
+        'security/ir.model.access.csv',
     ],
     'assets': {
         'web.assets_frontend': [
